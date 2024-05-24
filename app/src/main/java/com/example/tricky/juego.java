@@ -1,7 +1,9 @@
 package com.example.tricky;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -31,6 +33,8 @@ public class juego extends AppCompatActivity {
     // Variable para turno
     boolean meToca;
 
+    //Variable para nombre de usuario
+    String nombreUsu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +43,7 @@ public class juego extends AppCompatActivity {
         ////// Recuperación de datos de la activity anterior /////////
         Intent intent = getIntent();
         // Obtener el valor enviado de la otra activity
-        String nombreUsu = intent.getStringExtra("nombreUsu");
+        nombreUsu = intent.getStringExtra("nombreUsu");
 
         //Usar el valor recuperado
         TextView etNombreUsu = (TextView) findViewById(R.id.etNombreUsu);
@@ -94,6 +98,13 @@ public class juego extends AppCompatActivity {
         TurnoMaquina();
     }
 
+    public void NuevoJuegoAuto(){
+        meToca = false;
+        AsignarEmpty();
+        LimpiarEtiquetas();
+        TurnoMaquina();
+    }
+
     private void TurnoMaquina(){
         if(!TrikyLleno()){
             int[] auxVector = CeldaRandom();
@@ -126,6 +137,21 @@ public class juego extends AppCompatActivity {
         }
         return bandera;
     }
+
+    private boolean Triky(String letra){
+
+        if(etUno.getText().toString().equals(letra) && etDos.getText().toString().equals(letra) && etTres.getText().toString().equals(letra)) return true;
+        if(etCuatro.getText().toString().equals(letra) && etCinco.getText().toString().equals(letra) && etSeis.getText().toString().equals(letra)) return true;
+        if(etSiete.getText().toString().equals(letra) && etOcho.getText().toString().equals(letra) && etNueve.getText().toString().equals(letra)) return true;
+        if(etUno.getText().toString().equals(letra) && etSeis.getText().toString().equals(letra) && etSiete.getText().toString().equals(letra)) return true;
+        if(etDos.getText().toString().equals(letra) && etCinco.getText().toString().equals(letra) && etOcho.getText().toString().equals(letra)) return true;
+        if(etTres.getText().toString().equals(letra) && etCuatro.getText().toString().equals(letra) && etNueve.getText().toString().equals(letra)) return true;
+        if(etUno.getText().toString().equals(letra) && etCinco.getText().toString().equals(letra) && etNueve.getText().toString().equals(letra)) return true;
+        if(etTres.getText().toString().equals(letra) && etCinco.getText().toString().equals(letra) && etSiete.getText().toString().equals(letra)) return true;
+        else return false;
+    }
+
+
 
     private void LimpiarEtiquetas(){
         etUno.setText("");
@@ -195,11 +221,27 @@ public class juego extends AppCompatActivity {
                 }
                 //Acomodar turno
                 meToca = false;
-                //Le toca a la máquina
-                TurnoMaquina();
+                //Le toca a la máquina si no he ganado
+                if(!Triky("O")){
+                    TurnoMaquina();
+                }
+                else {
+
+                    AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+                    alerta.setMessage(nombreUsu + " ha ganado!");
+                    alerta.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            NuevoJuegoAuto();
+                        }
+                    });
+                    alerta.show();
+                }
             }
         }else{
-            Toast.makeText(this, "Inicia un nuevo juego!", Toast.LENGTH_SHORT).show();
+            AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+            alerta.setMessage("Inicia un nuevo Juego!").setPositiveButton("ok", null);
+            alerta.show();
         }
     }
 
@@ -237,7 +279,21 @@ public class juego extends AppCompatActivity {
         if(filaObtenida == 2 && columnaObtenida == 2){
             etNueve.setText("X");
         }
-        //Acomodamos el turno
-        meToca = true;
+        //Me toca si la máquina no ha ganado
+        if(!Triky("X")){
+            //Acomodamos el turno
+            meToca = true;
+        }
+        else {
+            AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+            alerta.setMessage("La máquina ha ganado!");
+            alerta.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    NuevoJuegoAuto();
+                }
+            });
+            alerta.show();
+        }
     }
 }
