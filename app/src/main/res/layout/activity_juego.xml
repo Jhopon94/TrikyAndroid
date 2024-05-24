@@ -18,4 +18,134 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/etUno"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="124dp"
+        android:background="#DFDEDE"
+        android:onClick="EscribirLetraJugador"
+        android:textAlignment="center"
+        android:textSize="60sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNombreUsu" />
+
+    <TextView
+        android:id="@+id/etDos"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="124dp"
+        android:background="#DFDEDE"
+        android:onClick="EscribirLetraJugador"
+        android:textAlignment="center"
+        android:textSize="60sp"
+        app:layout_constraintStart_toEndOf="@+id/etUno"
+        app:layout_constraintTop_toBottomOf="@+id/etNombreUsu" />
+
+    <TextView
+        android:id="@+id/etTres"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="124dp"
+        android:background="#DFDEDE"
+        android:onClick="EscribirLetraJugador"
+        android:textAlignment="center"
+        android:textSize="60sp"
+        app:layout_constraintStart_toEndOf="@+id/etDos"
+        app:layout_constraintTop_toBottomOf="@+id/etNombreUsu" />
+
+    <TextView
+        android:id="@+id/etCuatro"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="14dp"
+        android:background="#DFDEDE"
+        android:onClick="EscribirLetraJugador"
+        android:textAlignment="center"
+        android:textSize="60sp"
+        app:layout_constraintStart_toEndOf="@+id/etCinco"
+        app:layout_constraintTop_toBottomOf="@+id/etTres" />
+
+    <TextView
+        android:id="@+id/etCinco"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="14dp"
+        android:background="#DFDEDE"
+        android:onClick="EscribirLetraJugador"
+        android:textAlignment="center"
+        android:textSize="60sp"
+        app:layout_constraintStart_toEndOf="@+id/etSeis"
+        app:layout_constraintTop_toBottomOf="@+id/etDos" />
+
+    <TextView
+        android:id="@+id/etSeis"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
+        android:background="#DFDEDE"
+        android:onClick="EscribirLetraJugador"
+        android:textAlignment="center"
+        android:textSize="60sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etUno" />
+
+    <TextView
+        android:id="@+id/etSiete"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="16dp"
+        android:background="#DFDEDE"
+        android:onClick="EscribirLetraJugador"
+        android:textAlignment="center"
+        android:textSize="60sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etSeis" />
+
+    <TextView
+        android:id="@+id/etOcho"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="15dp"
+        android:background="#DFDEDE"
+        android:onClick="EscribirLetraJugador"
+        android:textAlignment="center"
+        android:textSize="60sp"
+        app:layout_constraintStart_toEndOf="@+id/etSiete"
+        app:layout_constraintTop_toBottomOf="@+id/etCinco" />
+
+    <TextView
+        android:id="@+id/etNueve"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="15dp"
+        android:background="#DFDEDE"
+        android:onClick="EscribirLetraJugador"
+        android:textAlignment="center"
+        android:textSize="60sp"
+        app:layout_constraintStart_toEndOf="@+id/etOcho"
+        app:layout_constraintTop_toBottomOf="@+id/etCuatro" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="245dp"
+        android:layout_height="101dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="108dp"
+        android:onClick="NuevoJuego"
+        android:text="Nuevo Juego"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etOcho" />
 </androidx.constraintlayout.widget.ConstraintLayout>
